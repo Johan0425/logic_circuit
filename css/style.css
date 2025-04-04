@@ -1,0 +1,81 @@
+body {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1, h2 {
+    color: #00b7eb;
+}
+
+.controls, .circuit-area, .truth-table, .results {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #2a2a2a;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 183, 235, 0.3);
+}
+
+input, button {
+    padding: 8px;
+    margin: 5px;
+    background-color: #3a3a3a;
+    color: #ffffff;
+    border: 1px solid #00b7eb;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #00b7eb;
+    color: #1a1a1a;
+}
+
+.circuit-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#circuit {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.gate {
+    padding: 10px 20px;
+    background-color: #4a4a4a;
+    border: 2px solid #00b7eb;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.gate:hover {
+    background-color: #5a5a5a;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #00b7eb;
+    background-color: #3a3a3a;
+}
+
+th {
+    background-color: #00b7eb;
+    color: #1a1a1a;
+}
