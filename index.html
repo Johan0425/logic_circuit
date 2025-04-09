@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,43 +10,58 @@
 <body>
     <div class="container">
         <h1>Simulador de Circuitos Lógicos</h1>
-        
-        <!-- Selección de número de entradas -->
+
         <div class="controls">
-            <label for="numInputs">Número de entradas (2-4):</label>
-            <input type="number" id="numInputs" min="2" max="4" value="2">
-            <button onclick="generateTruthTable()">Generar Tabla</button>
-        </div>
-
-        <!-- Área del circuito -->
-        <div class="circuit-area" id="circuitArea">
-            <h2>Circuito</h2>
-            <div id="circuit">
-                <!-- Circuito base: 2 compuertas AND conectadas a una OR -->
-                <div class="gate" data-type="AND">AND</div>
-                <div class="gate" data-type="AND">AND</div>
-                <div class="gate" data-type="OR">OR</div>
+            <h2>Controles</h2>
+            <div class="component-list">
+                <div class="component" onclick="setActiveComponent('AND')">AND</div>
+                <div class="component" onclick="setActiveComponent('OR')">OR</div>
+                <div class="component" onclick="setActiveComponent('NOT')">NOT</div>
+                <div class="component" onclick="setActiveComponent('NAND')">NAND</div>
+                <div class="component" onclick="setActiveComponent('NOR')">NOR</div>
+                <div class="component" onclick="setActiveComponent('XOR')">XOR</div>
             </div>
-            <button onclick="addGate()">Añadir Compuerta</button>
-            <button onclick="toggleNegation()">Negar Salida</button>
+
+            <div class="mode-buttons">
+                <button onclick="setMode('add')">Añadir</button>
+                <button onclick="setMode('connect')">Conectar</button>
+                <button onclick="setMode('negate')">Negar</button>
+                <button onclick="setMode('delete')">Eliminar</button>
+                <button onclick="setMode('move')">Mover</button>
+            </div>
+
+            <div class="message" id="message-box">
+                Selecciona un modo para empezar a interactuar con el circuito.
+            </div>
         </div>
 
-        <!-- Tabla de verdad -->
-        <div class="truth-table" id="truthTable">
-            <h2>Tabla de Evaluación</h2>
-            <table id="table">
-                <thead id="tableHead"></thead>
-                <tbody id="tableBody"></tbody>
+        <div class="circuit-area">
+            <h2>Circuito</h2>
+            <div id="circuit-container"></div>
+            <button onclick="evaluateCircuit()">Evaluar Circuito</button>
+        </div>
+
+        <div class="results">
+            <h2>Resultados</h2>
+            <div id="equation">Ecuación booleana: <span></span></div>
+            <div id="operation">Operación: <span></span></div>
+            <div id="current-result">Salida actual: <span>-</span></div>
+        </div>
+
+        <div class="truth-table">
+            <h2>Tabla de Verdad</h2>
+            <table>
+                <thead id="table-head">
+                    <!-- Se generará dinámicamente -->
+                </thead>
+                <tbody id="table-body">
+                    <!-- Se generará dinámicamente -->
+                </tbody>
             </table>
         </div>
-
-        <!-- Resultados -->
-        <div class="results" id="results">
-            <h2>Resultados</h2>
-            <p id="operation"></p>
-            <p id="output"></p>
-        </div>
     </div>
+
     <script src="js/main.js"></script>
 </body>
+
 </html>

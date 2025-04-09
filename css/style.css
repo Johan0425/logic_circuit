@@ -7,15 +7,20 @@ body {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 100%;
     margin: 0 auto;
+    height: 100vh;
 }
 
-h1, h2 {
+h1,
+h2 {
     color: #00b7eb;
 }
 
-.controls, .circuit-area, .truth-table, .results {
+.controls,
+.circuit-area,
+.truth-table,
+.results {
     margin: 20px 0;
     padding: 15px;
     background-color: #2a2a2a;
@@ -23,7 +28,8 @@ h1, h2 {
     box-shadow: 0 0 10px rgba(0, 183, 235, 0.3);
 }
 
-input, button {
+button,
+select {
     padding: 8px;
     margin: 5px;
     background-color: #3a3a3a;
@@ -38,28 +44,93 @@ button:hover {
     color: #1a1a1a;
 }
 
-.circuit-area {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#circuit {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
+#circuit-container {
+    width: 100%;
+    height: 400px;
+    background-color: #333;
+    border: 2px solid #00b7eb;
+    border-radius: 5px;
+    margin: 10px 0;
+    position: relative;
+    overflow: hidden;
 }
 
 .gate {
-    padding: 10px 20px;
+    position: absolute;
     background-color: #4a4a4a;
     border: 2px solid #00b7eb;
     border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
     cursor: pointer;
+    z-index: 10;
 }
 
-.gate:hover {
-    background-color: #5a5a5a;
+.and-gate {
+    width: 60px;
+    height: 40px;
+    border-radius: 0 20px 20px 0;
+}
+
+.or-gate {
+    width: 60px;
+    height: 40px;
+    border-radius: 0 20px 20px 0;
+}
+
+.input-node,
+.output-node {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 30px;
+}
+
+.connection {
+    position: absolute;
+    background-color: #00b7eb;
+    height: 2px;
+    z-index: 5;
+}
+
+.connection.vertical {
+    width: 2px;
+}
+
+.connection-point {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 15;
+}
+
+.connection-point.input {
+    left: -5px;
+    top: 15px;
+}
+
+.connection-point.output {
+    right: -5px;
+    top: 15px;
+}
+
+.connection-point.negated {
+    background-color: #ff5555;
+}
+
+.connection-point.negated::after {
+    content: "¬";
+    position: absolute;
+    color: #ff5555;
+    font-size: 16px;
+    top: -15px;
+    left: 2px;
 }
 
 table {
@@ -68,14 +139,50 @@ table {
     margin-top: 10px;
 }
 
-th, td {
+th,
+td {
     padding: 10px;
     text-align: center;
     border: 1px solid #00b7eb;
-    background-color: #3a3a3a;
 }
 
 th {
     background-color: #00b7eb;
     color: #1a1a1a;
+}
+
+td {
+    background-color: #3a3a3a;
+}
+
+.component-list {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.component {
+    padding: 5px 10px;
+    background-color: #4a4a4a;
+    border: 1px solid #00b7eb;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.component:hover,
+.component.selected {
+    background-color: #00b7eb;
+    color: #1a1a1a;
+}
+
+.mode-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.message {
+    color: #00b7eb;
+    font-style: italic;
+    padding: 10px;
 }
